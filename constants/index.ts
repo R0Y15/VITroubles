@@ -74,10 +74,29 @@ export interface ThreadProps {
 export interface ThreadCardProps {
   id: string,
   currentuser: string | undefined,
-  parentId: string,
+  parentId: string | null,
   content: string,
-  author: string,
-  community: string,
+  author: {
+    id: string,
+    name: string,
+    image: string,
+  },
+  community: {
+    id: string,
+    name: string,
+    image: string,
+  } | null,
   createdAt: string,
-  comments: string,
+  comments: {
+    author: {
+      image: string
+    }
+  }[],
+  isComment?: boolean
+}
+
+export interface CommentProps {
+  threadId: string,
+  userImg: string,
+  userId: string
 }
