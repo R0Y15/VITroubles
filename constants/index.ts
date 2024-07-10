@@ -100,3 +100,27 @@ export interface CommentProps {
   userImg: string,
   userId: string
 }
+
+export interface ProfileHeaderProps {
+  accountId: string,
+  authUserId: string,
+  name: string,
+  username: string,
+  avatar: string,
+  bio: string
+}
+
+export interface ThreadsTabProps {
+  currentUserId: string,
+  accountId: string,
+  accountType: string
+}
+
+export interface UserCardProps {
+  key: string,
+  id: string,
+  name: string,
+  username: string,
+  image: string,
+  personType: string
+}
