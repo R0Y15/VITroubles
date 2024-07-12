@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -20,6 +20,7 @@ import { Textarea } from '@/components/ui/textarea';
 const page = () => {
 
   const form = useRef();
+  const [btnTxt, setBtnTxt] = useState('Send');
 
   const formSchema = z.object({
     username: z.string().min(2).max(50),
@@ -45,9 +46,11 @@ const page = () => {
       })
       .then(
         () => {
+          setBtnTxt('Sent!');
           console.log('SUCCESS!');
         },
         (error) => {
+          setBtnTxt('Failed!');
           console.log('FAILED...', error.text);
         },
       );
@@ -135,7 +138,7 @@ const page = () => {
                 </FormItem>
               )}
             />
-            <Button type="submit" value='Send' className='bg-primary-500'>Send</Button>
+            <Button type="submit" value='Send' className='bg-primary-500'>{btnTxt}</Button>
           </form>
         </Form>
       </section>
