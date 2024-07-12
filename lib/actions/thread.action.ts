@@ -7,9 +7,15 @@ import User from "../models/user.model";
 import { revalidatePath } from "next/cache";
 import Community from "../models/community.model";
 
+try {
+    connectDB();
+} catch (error) {
+    console.error("Error connecting to database:", error);
+}
+
 export async function createThread({ text, author, communityId, path }: ThreadProps) {
     try {
-        connectDB();
+        // connectDB();
 
         const communityIdObject = await Community.findOne(
             { id: communityId },
@@ -44,7 +50,7 @@ export async function createThread({ text, author, communityId, path }: ThreadPr
 
 export async function getThreads(pageNumber = 1, pageSize = 20) {
 
-    connectDB();
+    // connectDB();
 
     // cal no of pages to skip
     const skipAmt = (pageNumber - 1) * pageSize;
@@ -82,7 +88,7 @@ export async function getThreads(pageNumber = 1, pageSize = 20) {
 }
 
 export async function fetchThreadById(id: string) {
-    connectDB();
+    // connectDB();
 
     try {
         // todo: populate community
@@ -124,7 +130,7 @@ export async function addCommentToThread(
     userId: string,
     path: string
 ) {
-    connectDB();
+    // connectDB();
 
     try {
         const originalThread = await Thread.findById(threadId); //find the original thread by its ID
@@ -169,7 +175,7 @@ async function fetchAllChildThreads(threadId: string): Promise<any[]> {
 
 export async function deleteThread(id: string, path: string): Promise<void> {
     try {
-        connectDB();
+        // connectDB();
 
         // Find the thread to be deleted (the main thread)
         const mainThread = await Thread.findById(id).populate("author community");
