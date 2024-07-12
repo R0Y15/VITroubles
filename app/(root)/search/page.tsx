@@ -2,8 +2,6 @@ import React from 'react'
 import { currentUser } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
 import { fetchUser, fetchUsers } from '@/lib/actions/user.action';
-import { ProfileHeader, ThreadsTab } from '@/components/shared';
-import Image from 'next/image';
 import { UserCard } from '@/components/cards';
 
 const page = async () => {
