@@ -10,7 +10,7 @@ import { profileTabs } from '@/constants';
 const page = async ({ params }: { params: { id: string } }) => {
 
   const user = await currentUser(); //fetch current user
-  if (!user) return null;
+  if (!user) redirect('/sign-in');
 
   const userInfo = await fetchUser(params.id); //fetch user info
   if (!userInfo?.onboarded) redirect('/onboarding'); //check for user login status

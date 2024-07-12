@@ -107,7 +107,8 @@ export interface ProfileHeaderProps {
   name: string,
   username: string,
   avatar: string,
-  bio: string
+  bio: string,
+  type?: 'community' | 'user'
 }
 
 export interface ThreadsTabProps {
@@ -123,4 +124,15 @@ export interface UserCardProps {
   username: string,
   image: string,
   personType: string
+}
+
+export interface CommunityCardProps {
+  id: string;
+  name: string;
+  username: string;
+  image: string;
+  bio: string;
+  members: {
+    image: string;
+  }[];
 }
