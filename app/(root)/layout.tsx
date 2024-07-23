@@ -6,7 +6,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'VITroubles',
   description: 'A next.js authentication system'
 }
